@@ -10,7 +10,7 @@
        * element that contains the map. */
 
         #map {
-            height: 100%;
+            height: 80%;
         }
         /* Optional: Makes the sample page fill the window. */
 
@@ -32,6 +32,11 @@
                 lat: 55.706465,
                 lng: 12.539288
             };
+            var my2ndLatLng = {
+                lat: 55.710505,
+                lng: 12.526350
+            };
+
 
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 4,
@@ -40,6 +45,13 @@
 
             var marker = new google.maps.Marker({
                 position: myLatLng,
+                map: map,
+                title: 'Hello World!'
+            });
+
+
+            var marker = new google.maps.Marker({
+                position: my2ndLatLng,
                 map: map,
                 title: 'Hello World!'
             });
