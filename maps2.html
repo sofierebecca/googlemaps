@@ -2,15 +2,14 @@
 <html>
 
 <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Simple markers</title>
+    <title>Marker Animations</title>
     <style>
         /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
 
         #map {
-            height: 80%;
+            height: 100%;
         }
         /* Optional: Makes the sample page fill the window. */
 
@@ -27,56 +26,44 @@
 <body>
     <div id="map"></div>
     <script>
+        // The following example creates a marker in Stockholm, Sweden using a DROP
+        // animation. Clicking on the marker will toggle the animation between a BOUNCE
+        // animation and no animation.
+
+        var marker;
+
+        var image = {
+            url: 'imgs/logolille.png'
+        };
+
         function initMap() {
-            var myLatLng = {
-                lat: 55.706465,
-                lng: 12.539288
-            };
-            var my2ndLatLng = {
-                lat: 55.710505,
-                lng: 12.526350
-            };
-
-            var roskildeLatLng = {
-                lat: 55.638007,
-                lng: 12.088851
-            };
-
-            var vikingLatLng = {
-                lat: 55.650737,
-                lng: 12.080461
-            };
-
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 4,
-                center: myLatLng
+                zoom: 13,
+                center: {
+                    lat: 59.325,
+                    lng: 18.070
+                }
             });
 
-            var marker = new google.maps.Marker({
-                position: myLatLng,
+            marker = new google.maps.Marker({
                 map: map,
-                title: 'KEA!'
+                draggable: true,
+                icon: image,
+                animation: google.maps.Animation.DROP,
+                position: {
+                    lat: 59.327,
+                    lng: 18.067
+                }
             });
+            marker.addListener('click', toggleBounce);
+        }
 
-
-            var marker = new google.maps.Marker({
-                position: my2ndLatLng,
-                map: map,
-                title: 'Ringertoften!'
-            });
-
-            var marker = new google.maps.Marker({
-                position: roskildeLatLng,
-                map: map,
-                title: 'Roskilde!'
-            });
-
-            var marker = new google.maps.Marker({
-                position: vikingLatLng,
-                map: map,
-                title: 'Vikingeskibsmuseet!'
-            });
-
+        function toggleBounce() {
+            if (marker.getAnimation() !== null) {
+                marker.setAnimation(null);
+            } else {
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+            }
         }
 
     </script>
