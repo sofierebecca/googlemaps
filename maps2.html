@@ -37,6 +37,15 @@
                 lng: 12.526350
             };
 
+            var roskildeLatLng = {
+                lat: 55.638007,
+                lng: 12.088851
+            };
+
+            var vikingLatLng = {
+                lat: 55.650737,
+                lng: 12.080461
+            };
 
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 4,
@@ -53,8 +62,21 @@
             var marker = new google.maps.Marker({
                 position: my2ndLatLng,
                 map: map,
-                title: 'Hello World!'
+                title: 'Ringertoften!'
             });
+
+            var marker = new google.maps.Marker({
+                position: roskildeLatLng,
+                map: map,
+                title: 'Roskilde!'
+            });
+
+            var marker = new google.maps.Marker({
+                position: vikingLatLng,
+                map: map,
+                title: 'Vikingeskibsmuseet!'
+            });
+
         }
 
     </script>
